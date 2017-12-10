@@ -14,7 +14,8 @@ RUN apk update && \
     wget -qO - http://apache.claz.org/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz | tar -xz -C /opt/ && \
     ln -s /opt/scala-${SCALA_VERSION} /opt/scala && \
     ln -s /opt/spark-${SPARK_VERSION}-bin-hadoop2.7 /opt/spark && \
-    wget -O /root/.vimrc https://raw.githubusercontent.com/asarchami/vimrc/master/vimrc.vim
+    wget -O /root/.vimrc https://raw.githubusercontent.com/asarchami/vimrc/master/vimrc.vim && \
+    echo "PATH=$PATH:/opt/scala/bin:/opt/sbt/bin:/opt/spark/bin" > ~/.bashrc
 
 COPY conf/ /opt/conf
 
