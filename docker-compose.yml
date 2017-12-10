@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  master:
+    build:
+      context: spark/
+    image: asarchami/spark:2.2.1
+    container_name: master
+    ports:
+      - "8080:8080"
+      - "4040:4040"
+    command: ["/usr/bin/supervisord", "--configuration=/opt/conf/master.conf"]
+
+  slave:
+    image: asarchami/spark:2.2.1
+    depends_on:
+      - master
+    command: ["/usr/bin/supervisord", "--configuration=/opt/conf/slave.conf"]
