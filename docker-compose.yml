@@ -5,7 +5,9 @@ services:
     build:
       context: spark/
     image: asarchami/spark:2.2.1
-    container_name: master
+    container_name: spark_master
+    volumes:
+      - ./data:/opt/data
     ports:
       - "8080:8080"
       - "4040:4040"
